@@ -55,7 +55,7 @@ export default function AccordionList() {
             <div className="accordion-list">
 
 
-                <div className="boh">
+                <div className="render">
                 {
                     languages.map((item, index) => (
 
@@ -66,10 +66,8 @@ export default function AccordionList() {
                                     {item.title}
                                 </button>
 
-                                
-
-
                             </div>
+
 
                             {open === item.id && (
                                 <div className="card">

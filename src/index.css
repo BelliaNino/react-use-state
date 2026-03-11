@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+  font-family: sans-serif;
+}
+
 h1 {
   background-color: rgb(231, 231, 231);
   padding: 1rem;
@@ -18,7 +22,7 @@ h1 {
 
 }
 
-.boh{
+.render{
   display: flex;
   gap: 1rem
 }
@@ -39,4 +43,13 @@ button{
   padding: 0.5rem;
   color: white;
   cursor: pointer;
+}
+
+h2{
+  font-weight: 500;
+}
+
+p{
+  color: rgb(120, 120, 120);
+  margin-top: 1rem;
 }
