@@ -44,7 +44,7 @@ export default function AccordionList() {
         //se il bottone selezionato (open) ha lo stesso id allore setOpen darà valore 'null'
         if (open == id) {
             setOpen(null)
-        } 
+        }
         //mentre se il bottone selezionato è diverso dal suo id allora setOpen prendera il valore dell'id che gli assegneremo in seguito 
         else {
             setOpen(id)
@@ -53,6 +53,25 @@ export default function AccordionList() {
 
     //creo una variabile per trasferire l'id selezionato, fuori dal ciclo map()  
     const activated = languages.find(item => item.id === open)
+
+    //creo una variabile 'null'
+    let cardContain = null
+
+    //se il valore è true allora la variabile stampa il contenuto dell'id selezionato
+    if (activated) {
+        cardContain = (
+            <>
+                <h2>{activated.title}</h2>
+                <p>{activated.description}</p>
+            </>
+        )
+    } 
+    //altrimenti stampa un messaggio preimpostato
+    else {
+        cardContain=
+            <p>Nessun linguaggio selezionato...</p>
+        
+    }
 
 
     return (
@@ -79,16 +98,11 @@ export default function AccordionList() {
 
                 <div>
 
-                    {/*se 'activated' è true allora react renderizza le card */}
-                    {activated && (
-                        <div className="card">
-
-                            <h2>{activated.title}</h2>
-
-                            <p>{activated.description}</p>
-                        </div>
-
-                    )}
+                    {/*Render card */}
+                    <div className="card">
+                        {/*metto il contenuto di cardContain dentro la card*/}
+                        {cardContain}
+                    </div>
 
                 </div>
 
