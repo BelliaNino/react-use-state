@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const languages = [
   {
     id: 1,
@@ -32,10 +34,47 @@ const languages = [
 ];
 
 export default function AccordionList() {
+    const [open, setOpen] = useState(null)
+
+    function toggleAccordion(id){
+
+        if(open == id){
+            setOpen(null)
+        }else{
+            setOpen(id)
+        }
+        
+    }
+
     
     return (
+
         <>
            <h1>Learn Web Development</h1>
+
+           <div className="accordion-list">
+
+                {
+                    languages.map((item, index) => (
+
+                        <div className="accordion-item" key={index.id}>
+
+                            <button onClick={() => toggleAccordion(item.id)}>
+                                {item.title}
+                            </button>
+
+                            {open === item.id && (
+                                <div>
+
+                                    <h2>{item.title}</h2>
+
+                                    <p>{item.description}</p>
+                                </div>
+                            )}
+                        </div>
+                    ))
+                }
+            </div>
         </>
     )
 }
