@@ -33,18 +33,26 @@ const languages = [
     }
 ];
 
+
 export default function AccordionList() {
+
+    //costante con i parametri dove all'inizio open è uguale a 'null', mentre 'setOpen' ci aiuterà a cambiare il valore in seguito
     const [open, setOpen] = useState(null)
 
     function toggleAccordion(id) {
 
+        //se il bottone selezionato (open) ha lo stesso id allore setOpen darà valore 'null'
         if (open == id) {
             setOpen(null)
-        } else {
+        } 
+        //mentre se il bottone selezionato è diverso dal suo id allora setOpen prendera il valore dell'id che gli assegneremo in seguito 
+        else {
             setOpen(id)
         }
-
     }
+
+    //creo una variabile per trasferire l'id selezionato, fuori dal ciclo map()  
+    const activated = languages.find(item => item.id === open)
 
 
     return (
@@ -56,35 +64,35 @@ export default function AccordionList() {
 
 
                 <div className="render">
-                {
-                    languages.map((item, index) => (
+                    {
+                        languages.map(item => (
 
-                        <div className="accordion-item" key={item.id}>
-
-                            <div className="btn">
+                            <div className="accordion-item" key={item.id}>
                                 <button onClick={() => toggleAccordion(item.id)}>
                                     {item.title}
                                 </button>
-
                             </div>
+                        ))
+                    }
 
-
-                            {open === item.id && (
-                                <div className="card">
-
-                                    <h2>{item.title}</h2>
-
-                                    <p>{item.description}</p>
-                                </div>
-
-                            )}
-                        </div>
-                    ))
-                }
                 </div>
 
-                
-            </div>
+                <div>
+
+                    {/*se 'activated' è true allora react renderizza le card */}
+                    {activated && (
+                        <div className="card">
+
+                            <h2>{activated.title}</h2>
+
+                            <p>{activated.description}</p>
+                        </div>
+
+                    )}
+
+                </div>
+
+            </div >
         </>
     )
 }
