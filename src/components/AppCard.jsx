@@ -12,6 +12,7 @@ export default function AppCard({ languages }) {
                 {languages.map((item) => (
 
                     <Card
+                        key={item.title}
                         title={item.title}
                         description={item.description}
                     />
